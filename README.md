@@ -1,106 +1,78 @@
-# Xalibre Library Manager & Converter
+# Xalibre-zh · 汉化版
 
-**Xalibre** is a comprehensive e-book management tool designed to organize your EPUB library, fetch metadata, edit book details, and convert files into the optimized **XTC** format for e-ink devices (specifically the Xteink X4).
+基于 **Xalibre** 的完整汉化版本：界面、转换器选项均为中文，并增加首行缩进、段间距、目录层级、抗锯齿等可调项，便于中文阅读与排版。
 
-> **Note:** This application was formerly known as **Epub2XTC** before evolving into the full-featured Xalibre Library Manager.
-
----
-
-## ✨ Features
-
-* **📚 Library Management**: Organize, sort, and filter your e-book collection with a local SQLite database.
-* **⚡ EPUB to XTC Conversion**: Convert standard books into **1-bit** or **2-bit** bitmaps optimized for high-performance e-ink rendering.
-* **🧠 Spectra AI**: A "Word Wise"-like language learning engine that uses AI to analyze text difficulty and generate inline synonyms/translations above complex words.
-* **📝 Inline Footnotes**: Automatically extracts footnotes (which usually require jumping to the end of the book) and inserts them directly into the text inside a box immediately after the paragraph where they are referenced.
-* **☁️ Metadata Fetching**: Automatically scrape book details and high-quality covers from Google Books, Apple Books, and Open Library.
-* **🖱️ Smart Drag & Drop**: Import books by dropping them in, and export specific formats (Cover, EPUB, or XTC) by dragging cards out.
-* **📡 Wireless Device Manager**: Browse files on your Xteink X4 and transfer books wirelessly via Wi-Fi.
----
-![App Screenshot 1](images/1.png)
-![App Screenshot 2](images/2.png)
----
-
-## 🚀 Getting Started
-
-### Installation
-* **Run**: Execute the `Xalibre-main.py` script or launch the compiled executable.
-* **First Run**: The application automatically creates necessary directories:
-    * **Windows Config**: `%APPDATA%\Xalibre`
-    * **Mac/Linux Config**: `~/.config/Xalibre`
-    * **Library Data**: Creates `Library`, `Exports`, `Presets`, and `Fonts` folders in your base directory (default `~/Xalibre`).
+**Xalibre** 是面向电纸书的 EPUB 管理与转换工具，支持整理书库、抓取元数据、编辑书籍信息，并将 EPUB 转为 **XTC** 格式（适配 Xteink X4 等 e-ink 设备）。
 
 ---
 
-## 📚 Library Manager
+## ✨ 功能概览
 
-The main interface is your central hub for organizing, viewing, and deploying your books.
+* **📚 书库管理**：本地 SQLite 书库，支持排序、筛选、搜索。
+* **⚡ EPUB → XTC 转换**：转为 **1-bit** 或 **2-bit** 位图，针对 e-ink 优化。
+* **🧠 Spectra AI**：类似 Word Wise，用 AI 分析难度并在难词上方显示释义/翻译。
+* **📝 行内脚注**：将书末脚注提取并插入到引用段落后方框内。
+* **☁️ 元数据抓取**：从 Google Books、Apple Books、Open Library 抓取书名、作者、封面。
+* **🖱️ 拖拽导入/导出**：拖入导入书籍，从卡片拖出导出封面/EPUB/XTC 或整包。
+* **📡 设备管理**：通过 Wi-Fi 连接 Xteink X4，浏览设备目录并上传书籍。
 
-### 1. Organizing & Browsing
-* **Importing**: Drag `.epub` files directly onto the window (background turns green) or click **`＋ Import`**.
-* **Searching**: Filter by Title or Author in real-time using the top-right search bar.
-* **Views**: Toggle between **Grid View** (Cover cards) and **List View** (Compact rows).
-* **Deleting**: Click the **`🗑`** icon on a card. You can also delete specific file formats (e.g., just the converted XTC file) by clicking the **`✕`** on the file badge.
+### 汉化与增强
 
-### 2. Built-in Viewers
-Accessed by clicking a book's cover or right-clicking to open **Book Details**:
-* **`📖 View Epub`**: Renders HTML structure to verify source content and chapters.
-* **`🖼 View XTC`**: Pixel-perfect preview of the binary XTC file. This allows you to check dithering quality and layout without the hardware device.
-* *Note: There is no raw hex viewer.*
+* 主界面、设置、转换器侧栏与二级菜单（对齐、方向、页眉页脚等）均为中文。
+* **排版**：首行缩进(px)、段间距(px)、字间距、行高、字号、字重等可调。
+* **目录**：目录字号可调；支持一级/二级标题缩进区分（壹贰叁 / 01 02 03）。
+* **渲染**：抗锯齿开关；段间距为 0 时与行高一致。
+* **标题与作者**：标题下作者行居中、无多余空隙；正文两端对齐与 text-justify 优化。
 
-### 3. Device Manager (Sending Books)
-Xalibre includes a dedicated manager for the Xteink X4:
-* **Manual Manager**: Click **`📟 Device Mgr`** to connect to the device IP. You can browse folders and **drag & drop** files into the list to upload.
-* **Quick Send**: Select books in the library and click **`📲 Send`**.
-    * **Wi-Fi**: Supports Custom IP, X4 Hotspot (`192.168.3.3`), and CrossPoint profiles.
-    * **USB**: Export to a local folder (optionally creating a `/Covers` directory for lock screens).
-
-### 4. Smart Export (Granular Drag & Drop)
-You can export files by dragging items *from* the library card to your computer:
-* **Cover Only**: Drag the **Cover Image** (.BMP).
-* **Original**: Drag the orange **.EPUB badge**.
-* **Converted**: Drag the green/teal **.XTC badge**.
-* **Full Package**: Drag the **background** of the card to export a folder containing all files.
-
-### 5. Metadata Editor
-* **Fetch Cloud Data**: Select books and click **`☁ Fetch`** to scrape descriptions and covers.
-* **Manual Edit**: Right-click a book -> **`✎ Edit Manually`** to change text or upload custom covers.
+![截图 1](images/1.png)
+![截图 2](images/2.png)
+![截图 3](images/3.png)
 
 ---
 
-## ⚡ Converter Engine (EPUB to XTC)
+## 🚀 使用说明
 
-Select a book and click **`⚡ Convert`** to open the Editor. This prepares the file for the e-ink screen.
+### 安装与运行
 
-### 1. Render Engine
-* **Target Format**: 
-    * `1-bit (XTG)`: Pure Black & White (Best for text clarity).
-    * `2-bit (XTH)`: 4-Level Grayscale (Best for Manga/Images).
-* **Mode**: 
-    * `Threshold`: High contrast for text.
-    * `Dither`: Dot patterns for shading images.
+```bash
+# 建议使用虚拟环境
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python Xalibre.py
+```
 
-### 2. Typography & Layout
-* **Fonts**: Choose system fonts or import custom ones.
-* **Inline Footnotes**: Enable this to extract standard endnotes and insert them into a box directly below the paragraph where they are referenced.
-* **Sizing**: Adjust Font Size (default 28pt), Weight, and Line Height.
-* **Custom Fonts**: Click **`Aa Import Font`** in the converter toolbar to add `.ttf` or `.otf` files to your library.
+* **首次运行**：会自动创建配置与书库目录（如 `~/Xalibre` 下的 Library、Exports、Presets、Fonts 等）。
 
-### 3. Spectra AI
-* **Functionality**: Acts like "Word Wise", providing inline glossaries for difficult terms.
-* **Configuration**:
-    * **API**: Requires OpenAI API Key.
-    * **Target Language**: Select language for definitions or translations.
-    * **Difficulty**: Set threshold based on Zipf frequency & Age of Acquisition (AoA) to determine which words get annotated.
+### 书库
 
-### 4. Presets
-* Save your complex settings (e.g., "Night Mode", "Manga", "Language Learning") as reusable **Presets** using the `💾` icon.
+* **导入**：将 `.epub` 拖入窗口或点击 **「＋ 导入」**。
+* **搜索**：右上角按书名/作者实时筛选。
+* **视图**：网格 / 列表切换；卡片上可删除书籍或仅删除某格式（如只删 XTC）。
+
+### 转换器（点击书籍后「⚡ 转换」）
+
+* **渲染引擎**：目标格式 1-bit / 2-bit，转换模式 阈值 / 抖动；**抗锯齿** 可开关。
+* **排版**：字体、对齐（两端对齐/左对齐）、字号、字重、行高、字间距、**首行缩进(px)**、**段间距(px)**。
+* **页面布局**：方向、边距、目录插入页、**目录字号**。
+* **页眉页脚**：章节标题、页码、进度条等位置与顺序（选项已汉化）。
+* **预设**：可将当前设置保存为预设，便于一键套用。
+
+### 设备与导出
+
+* **设备管理**：点击 **「📟 设备管理」** 输入设备 IP，浏览并上传文件。
+* **发送**：选中书籍后 **「📲 发送」**，支持 Wi-Fi 或导出到本地文件夹。
+* **导出**：从卡片拖出封面图、EPUB 或 XTC 到本机；拖卡片背景可导出整包。
 
 ---
 
-## ⚙️ Settings
+## ⚙️ 设置
 
-**Access**: Click the large **"Xalibre MANAGER"** logo text in the top-left of the toolbar.
+点击左上角 **「Xalibre 书库」** 进入设置：书库路径、设备 IP、默认视图与排序等。
 
-* **Library Location**: Change the physical path of your library folder.
-* **Device IP**: Set the default IP address for the X4 Reader.
-* **Defaults**: Configure startup preferences (Grid/List view, Sort order).
+---
+
+## 📄 许可与致谢
+
+* 汉化与增强由社区维护；原项目为 Xalibre。
+* 字体目录内含第三方字体（如 Atkinson Hyperlegible、Literata），请遵守各自 OFL 等许可。
